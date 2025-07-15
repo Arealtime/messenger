@@ -1,0 +1,44 @@
+{
+    "name": "arealtime/messenger",
+    "description": "",
+    "version": "1.0.0",
+    "type": "module",
+    "license": "MIT",
+    "keywords": [
+        "laravel",
+        "artisan",
+        "messenger",
+        "generator",
+        "clean architecture"
+    ],
+    "autoload": {
+        "psr-4": {
+            "Arealtime\\Messenger\\App\\": "src/app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Arash Taghavi",
+            "email": "arash.taghavi69@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.3"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "homepage": "https://github.com/arealtime/messenger",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/arealtime/messenger"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Arealtime\\Messenger\\App\\Providers\\MessengerServiceProvider"
+            ]
+        }
+    }
+}
