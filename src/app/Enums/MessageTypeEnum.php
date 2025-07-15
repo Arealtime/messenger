@@ -1,6 +1,6 @@
 <?php
 
-namespace Arealtime\Conversation\App\Enums;
+namespace Arealtime\Messenger\App\Enums;
 
 enum MessageTypeEnum: string
 {

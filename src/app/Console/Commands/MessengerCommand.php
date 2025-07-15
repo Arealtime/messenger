@@ -2,7 +2,7 @@
 
 namespace Arealtime\Messenger\App\Console\Commands;
 
-use Arealtime\Conversation\App\Enums\MessengerCommandEnum;
+use Arealtime\Messenger\App\Enums\MessengerCommandEnum;
 use Illuminate\Console\Command;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
@@ -46,21 +46,21 @@ class MessengerCommand extends Command
         $lines = [];
         $lines[] = "╔───────────────────────────────────────────────────────────────────────────────────────╗";
         $lines[] = "│                                                                                       │";
-        $lines[] = "│                     \033[4m\033[1;32m📚 Arealtime Messenger v1.0.0 — Command Usage Guide\033[0m                    │";
+        $lines[] = "│                  \033[4m\033[1;32m📚 Arealtime Messenger v1.0.0 — Command Usage Guide\033[0m                  │";
         $lines[] = "│                                                                                       │";
-        $lines[] = "│  \033[1;37m🛠  Usage: \033[1;36mphp artisan arealtime:messenger {action}\033[0m                                        │";
+        $lines[] = "│  \033[1;37m🛠  Usage: \033[1;36mphp artisan arealtime:messenger {action}\033[0m                                   │";
         $lines[] = "│                                                                                       │";
         $lines[] = "│  \033[1;37m📝 Available actions: \033[0m                                                               │";
-        $lines[] = "│    \033[1;35m- 🛢️  migrate:\033[0;37m Create tables required for messengers.\033[0m                                    │";
+        $lines[] = "│    \033[1;35m- 🛢️  migrate:\033[0;37m Create tables required for messengers.\033[0m                               │";
         $lines[] = "│    \033[1;35m- ⚙️  config:\033[0;37m Review and verify the current configuration settings.\033[0m                 │";
         $lines[] = "│    \033[1;35m- ❓ help:\033[0;37m Display this help message.\033[0m                                              │";
         $lines[] = "│                                                                                       │";
         $lines[] = "│ \033[0;36m╔═══════════════════════════════════════════════════════════════════════════════════╗\033[0m │";
         $lines[] = "│ \033[0;36m║ \033[1;37m💻 Command \033[0;32m                                         \033[1;37m📝 Description\033[0;36m                ║\033[0m │";
         $lines[] = "│ \033[0;36m╠═══════════════════════════════════════════════════════════════════════════════════╣\033[0m │";
-        $lines[] = "│ \033[0;36m║ \033[1;34mphp artisan arealtime:messenger migrate \033[0m  \033[0;37mRun migration for messenger tables.\033[0;36m               ║\033[0m │";
-        $lines[] = "│ \033[0;36m║ \033[1;34mphp artisan arealtime:messenger config \033[0m   \033[0;37mReview configurations.\033[0;36m                       ║\033[0m │";
-        $lines[] = "│ \033[0;36m║ \033[1;34mphp artisan arealtime:messenger help   \033[0m   \033[0;37mDisplay this help message.\033[0;36m                   ║\033[0m │";
+        $lines[] = "│ \033[0;36m║ \033[1;34mphp artisan arealtime:messenger migrate \033[0m  \033[0;37mRun migration for messenger tables.\033[0;36m     ║\033[0m │";
+        $lines[] = "│ \033[0;36m║ \033[1;34mphp artisan arealtime:messenger config \033[0m   \033[0;37mReview configurations.\033[0;36m                  ║\033[0m │";
+        $lines[] = "│ \033[0;36m║ \033[1;34mphp artisan arealtime:messenger help   \033[0m   \033[0;37mDisplay this help message.\033[0;36m              ║\033[0m │";
         $lines[] = "│ \033[0;36m╚═══════════════════════════════════════════════════════════════════════════════════╝\033[0m │";
         $lines[] = "│                                                                                       │";
         $lines[] = "╚───────────────────────────────────────────────────────────────────────────────────────╝";
@@ -75,18 +75,18 @@ class MessengerCommand extends Command
      */
     private function showHelp(): void
     {
-        $lines[] = "╔──────────────────────────────────────────────────────────────────────────────╗";
-        $lines[] = "│                                                                              │";
-        $lines[] = "│                  \033[4m\033[1;32m🚀 How to Use Arealtime Messenger Step-by-Step\033[0m                   │";
-        $lines[] = "│                                                                              │";
-        $lines[] = "│  \033[1;37m1-\033[0m \033[1;36mphp artisan arealtime:messenger migrate\033[0m                                       │";
-        $lines[] = "│     \033[0;37mRun this command to create the database table for messengers.\033[0m                 │";
-        $lines[] = "│                                                                              │";
-        $lines[] = "│  \033[1;37m2-\033[0m \033[1;36mphp artisan arealtime:messenger config\033[0m                                        │";
-        $lines[] = "│     \033[0;37mUse this to check where the User model is defined in the config file.\033[0m    │";
-        $lines[] = "│     \033[0;37mIf the User model is not correctly configured, user_id will not be saved.\033[0m│";
-        $lines[] = "│                                                                              │";
-        $lines[] = "╚──────────────────────────────────────────────────────────────────────────────╝";
+        $lines[] = "╔───────────────────────────────────────────────────────────────────────────────╗";
+        $lines[] = "│                                                                               │";
+        $lines[] = "│                 \033[4m\033[1;32m🚀 How to Use Arealtime Messenger Step-by-Step\033[0m                │";
+        $lines[] = "│                                                                               │";
+        $lines[] = "│  \033[1;37m1-\033[0m \033[1;36mphp artisan arealtime:messenger migrate\033[0m                                   │";
+        $lines[] = "│     \033[0;37mRun this command to create the database table for messengers.\033[0m             │";
+        $lines[] = "│                                                                               │";
+        $lines[] = "│  \033[1;37m2-\033[0m \033[1;36mphp artisan arealtime:messenger config\033[0m                                    │";
+        $lines[] = "│     \033[0;37mUse this to check where the User model is defined in the config file.\033[0m     │";
+        $lines[] = "│     \033[0;37mIf the User model is not correctly configured, user_id will not be saved.\033[0m │";
+        $lines[] = "│                                                                               │";
+        $lines[] = "╚───────────────────────────────────────────────────────────────────────────────╝";
 
         $this->line(implode("\n", $lines));
     }
@@ -132,7 +132,7 @@ class MessengerCommand extends Command
 
         $lines[] = "╔───────────────────────────────────────────────────────────────────────────────╗";
         $lines[] = "│                                                                               │";
-        $lines[] = "│             🔍 \033[4m\033[1;32mChecking Configuration for Arealtime Messenger\033[0m                      │";
+        $lines[] = "│               🔍 \033[4m\033[1;32mChecking Configuration for Arealtime Messenger\033[0m               │";
         $lines[] = "│                                                                               │";
         $lines[] = "│ $message ";
         $lines[] = "╚───────────────────────────────────────────────────────────────────────────────╝";

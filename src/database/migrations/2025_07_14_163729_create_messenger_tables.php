@@ -1,9 +1,9 @@
 <?php
 
-use Arealtime\Conversation\App\Enums\ConversationJoinRequestStatusEnum;
-use Arealtime\Conversation\App\Enums\ConversationTypeEnum;
-use Arealtime\Conversation\App\Enums\ConversationUserRoleEnum;
-use Arealtime\Conversation\App\Enums\MessageTypeEnum;
+use Arealtime\Messenger\App\Enums\ConversationJoinRequestStatusEnum;
+use Arealtime\Messenger\App\Enums\ConversationTypeEnum;
+use Arealtime\Messenger\App\Enums\ConversationUserRoleEnum;
+use Arealtime\Messenger\App\Enums\MessageTypeEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -44,10 +44,9 @@ class CreateMessengerTables extends Migration
             $table->timestamp('scheduled_at')->nullable();
             $table->timestamp('expired_at')->nullable();
             $table->timestamp('edited_at')->nullable();
-            $table->timestamp('deleted_at')->nullable();
 
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
         });
 
         Schema::create('conversation_join_requests', function (Blueprint $table) {
