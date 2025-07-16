@@ -18,6 +18,7 @@ class CreateMessengerTables extends Migration
                 ->default(ConversationTypeEnum::CHAT->value);
             $table->string('title')->nullable();
 
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('last_message_id')->nullable();
             $table->unsignedBigInteger('pinned_message_id')->nullable();
 
