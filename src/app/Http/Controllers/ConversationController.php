@@ -2,6 +2,7 @@
 
 namespace Arealtime\Messenger\App\Http\Controllers;
 
+use Arealtime\Messenger\App\Enums\ConversationTypeEnum;
 use Arealtime\Messenger\App\Http\Requests\Conversation\ConversationRequest;
 use Arealtime\Messenger\App\Http\Resources\ConversationResource;
 use Arealtime\Messenger\App\Models\Conversation;
@@ -38,12 +39,13 @@ class ConversationController extends Controller
     public function store(ConversationRequest $request): JsonResponse
     {
         $this->conversationService->setData([
-            $request->input('type'),
-            $request->input('title'),
-            $request->input('is_public'),
-            $request->input('can_join_via_link'),
-            $request->input('requires_approval'),
-            $request->input('max_numbers')
+            'type' => $request->input('type', ConversationTypeEnum::CHAT->value),
+            'title' => $request->input('title'),
+            'is_public' => $request->boolean('is_public'),
+            'can_join_via_link' =>  $request->boolean('can_join_via_link'),
+            'requires_approval' => $request->boolean('requires_approval'),
+            'requires_approval' => $request->boolean('requires_approval'),
+            'user_ids' => $request->array('user_ids')
         ])->create();
 
         return response()->json([

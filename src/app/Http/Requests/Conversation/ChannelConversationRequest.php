@@ -23,9 +23,8 @@ class ChannelConversationRequest extends FormRequest
     public function rules(): array
     {
         return [
+            ...app(ChatConversationRequest::class)->rules(),
             ...app(GroupConversationRequest::class)->rules(),
-            'user_ids' => ['required', 'array'],
-            'user_ids.*' => [Rule::exists(config('arealtime-messenger.user_model', 'id'))]
         ];
     }
 }

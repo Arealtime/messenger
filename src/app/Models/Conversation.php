@@ -2,9 +2,9 @@
 
 namespace Arealtime\Messenger\App\Models;
 
-use Arealtime\Conversation\App\Traits\Conversation\ConversationRelation;
-use Arealtime\Conversation\App\Traits\Conversation\ConversationScope;
-use Arealtime\Conversation\App\Traits\Conversation\ConversationVirtualAttribute;
+use Arealtime\Messenger\App\Traits\Conversation\ConversationRelation;
+use Arealtime\Messenger\App\Traits\Conversation\ConversationScope;
+use Arealtime\Messenger\App\Traits\Conversation\ConversationVirtualAttribute;
 use Arealtime\Messenger\App\Enums\ConversationTypeEnum;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;

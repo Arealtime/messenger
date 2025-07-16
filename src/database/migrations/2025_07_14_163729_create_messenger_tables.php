@@ -23,8 +23,8 @@ class CreateMessengerTables extends Migration
             $table->unsignedBigInteger('pinned_message_id')->nullable();
 
             $table->boolean('is_public')->default(true);
-            $table->boolean('can_join_via_link')->default(true);
-            $table->boolean('requires_approval')->default(true);
+            $table->boolean('can_join_via_link')->default(false);
+            $table->boolean('requires_approval')->default(false);
 
             $table->unsignedInteger('max_members')->default(2);
 
@@ -142,10 +142,9 @@ class CreateMessengerTables extends Migration
 
     public function down()
     {
-        Schema::table('conversations', function (Blueprint $table) {
-            $table->dropForeign(['last_message_id']);
-            $table->dropForeign(['pinned_message_id']);
-        });
+        Schema::table('conversations');
+
+
 
         Schema::dropIfExists('message_reactions');
         Schema::dropIfExists('message_statuses');

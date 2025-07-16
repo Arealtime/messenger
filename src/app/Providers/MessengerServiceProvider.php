@@ -15,6 +15,8 @@ class MessengerServiceProvider extends ServiceProvider
             __DIR__ . '/../../config/arealtime-messenger.php',
             'arealtime-messenger'
         );
+
+        $this->app->register(MessengerObserverProvider::class);
     }
 
     public function boot()

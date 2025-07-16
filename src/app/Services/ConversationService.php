@@ -53,7 +53,6 @@ class ConversationService
      */
     public function create(): Conversation
     {
-
         DB::beginTransaction();
         try {
             $conversation = Conversation::create($this->data);
@@ -85,7 +84,9 @@ class ConversationService
 
     private function attachUsers(): self
     {
-        $this->conversation->conversationUser()->createMany($this->data['user_ids']);
+        $userIds  = array_map(fn(int $id) => ['user_id' => $id], $this->data['user_ids']);
+
+        $this->conversation->conversationUser()->createMany($userIds);
         return $this;
     }
 }

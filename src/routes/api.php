@@ -1,16 +1,14 @@
 <?php
 
-use Arealtime\Post\App\Http\Controllers\PostController;
+use Arealtime\Messenger\App\Http\Controllers\ConversationController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['api', 'auth:sanctum'])->prefix('api/arealtime/posts')
+Route::middleware(['api', 'auth:sanctum'])->prefix('api/arealtime/conversations')
     ->name('arealtime.conversations.')
     ->group(function () {
-        Route::controller(PostController::class)->group(function () {
+        Route::controller(ConversationController::class)->group(function () {
             Route::get('', 'index');
-            Route::get('{ownedPost}', 'get');
+            Route::get('{conversation}', 'get');
             Route::post('', 'store');
-            Route::put('{ownedPost}', 'update');
-            Route::delete('{ownedPost}', 'destroy');
         });
     });

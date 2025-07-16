@@ -3,6 +3,7 @@
 namespace Arealtime\Messenger\App\Http\Requests\Conversation;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ChatConversationRequest extends FormRequest
 {
@@ -21,26 +22,9 @@ class ChatConversationRequest extends FormRequest
      */
     public function rules(): array
     {
-        /*
-             $table->id();
-            $table->enum('type', array_column(ConversationTypeEnum::cases(), 'value'))
-                ->default(ConversationTypeEnum::CHAT->value);
-            $table->string('title')->nullable();
-
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('last_message_id')->nullable();
-            $table->unsignedBigInteger('pinned_message_id')->nullable();
-
-            $table->boolean('is_public')->default(true);
-            $table->boolean('can_join_via_link')->default(true);
-            $table->boolean('requires_approval')->default(true);
-
-            $table->unsignedInteger('max_members')->default(2);
-
-            $table->timestamps();
-            $table->softDeletes();
-        */
-
-        return [];
+        return [
+            'user_ids' => ['required', 'array'],
+            'user_ids.*' => [Rule::exists(config('arealtime-messenger.user_model'), 'id')]
+        ];
     }
 }

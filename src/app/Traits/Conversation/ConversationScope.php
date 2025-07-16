@@ -1,6 +1,7 @@
 <?php
 
-namespace Arealtime\Conversation\App\Traits\Conversation;
+namespace Arealtime\Messenger\App\Traits\Conversation;
+
 
 use Arealtime\Messenger\App\Enums\ConversationTypeEnum;
 use Illuminate\Database\Eloquent\Builder;
