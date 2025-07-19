@@ -8,7 +8,9 @@ Route::middleware(['api', 'auth:sanctum'])->prefix('api/arealtime/conversations'
     ->group(function () {
         Route::controller(ConversationController::class)->group(function () {
             Route::get('', 'index');
-            Route::get('{conversation}', 'get');
+            Route::get('{ownedConversation}', 'get');
             Route::post('', 'store');
+            Route::put('{ownedConversation}', 'update');
+            Route::delete('{ownedConversation}', 'destroy');
         });
     });

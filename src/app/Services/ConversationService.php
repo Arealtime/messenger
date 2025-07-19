@@ -2,8 +2,9 @@
 
 namespace Arealtime\Messenger\App\Services;
 
+use Arealtime\Messenger\App\Events\ConversationCreated;
+use Arealtime\Messenger\App\Http\Controllers\ConversationController;
 use Arealtime\Messenger\App\Models\Conversation;
-use Exception;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\DB;
@@ -59,7 +60,7 @@ class ConversationService
 
             $this->setConversation($conversation);
 
-            $this->attachUsers();
+            ConversationCreated::dispatch($conversation, $this->data['user_ids']);
 
             DB::commit();
             return $this->conversation;
@@ -82,11 +83,44 @@ class ConversationService
         return Conversation::findOrFail($id);
     }
 
-    private function attachUsers(): self
-    {
-        $userIds  = array_map(fn(int $id) => ['user_id' => $id], $this->data['user_ids']);
 
-        $this->conversation->conversationUser()->createMany($userIds);
-        return $this;
+    /**
+     * Update a conversation by ID.
+     *
+     * @param Post $conversation
+     * @param array $data
+     * @return Post
+     *
+     * @throws ModelNotFoundException
+     */
+    public function update(): Conversation
+    {
+
+        DB::beginTransaction();
+        try {
+
+            $this->conversation->update($this->data);
+
+            $this->attachUsers();
+
+            DB::commit();
+            return $this->conversation;
+        } catch (Throwable $throwable) {
+            DB::rollBack();
+            throw $throwable;
+        }
+    }
+
+    /**
+     * Delete a conversation by ID.
+     *
+     * @param int $id
+     * @return bool
+     *
+     * @throws ModelNotFoundException
+     */
+    public function delete(): bool
+    {
+        return $this->conversation->delete();
     }
 }

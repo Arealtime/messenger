@@ -3,6 +3,7 @@
 namespace Arealtime\Messenger\App\Providers;
 
 use Arealtime\Messenger\App\Console\Commands\MessengerCommand;
+use Arealtime\Messenger\App\Providers\Conversation\ConversationServiceProvider;
 use Illuminate\Support\ServiceProvider;
 
 class MessengerServiceProvider extends ServiceProvider
@@ -17,6 +18,7 @@ class MessengerServiceProvider extends ServiceProvider
         );
 
         $this->app->register(MessengerObserverProvider::class);
+        $this->app->register(ConversationServiceProvider::class);
     }
 
     public function boot()

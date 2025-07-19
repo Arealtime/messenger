@@ -142,10 +142,7 @@ class CreateMessengerTables extends Migration
 
     public function down()
     {
-        Schema::table('conversations');
-
-
-
+        Schema::dropIfExists('conversations');
         Schema::dropIfExists('message_reactions');
         Schema::dropIfExists('message_statuses');
         Schema::dropIfExists('message_attachments');

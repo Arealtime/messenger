@@ -24,7 +24,7 @@ trait ConversationRelation
         return $this->belongsTo(config('arealtime-messenger.user_model'));
     }
 
-    public function conversationUser(): HasMany
+    public function conversationUsers(): HasMany
     {
         return $this->hasMany(ConversationUser::class);
     }

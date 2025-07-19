@@ -3,7 +3,6 @@
 namespace Arealtime\Messenger\App\Http\Requests\Conversation;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class ChannelConversationRequest extends FormRequest
 {
